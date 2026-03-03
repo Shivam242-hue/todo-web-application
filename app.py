@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, session,os
+from flask import Flask, render_template, request, redirect, session
+import os
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -137,5 +138,4 @@ def about():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    from flask import Flask, render_template, request, redirect, session
-import os
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
