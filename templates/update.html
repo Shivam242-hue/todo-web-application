@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body  %}
+   
+    <div class="container my-3 ">
+        <h1>Update Your Todo</h1>
+        <form action="/update/{{data.sno}}" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="title" id="title" value="{{data.title}}" placeholder="Title">
+            <label for="desc">Todo title</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" name="desc" id="desc" value="{{data.desc}}" placeholder="Description">
+            <label for="floatingPassword">Todo description</label>
+        </div>
+        <Button type="submit" class="btn btn-primary my-3">Update</Button>
+    </form>
+       
+       
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+{% endblock body %}

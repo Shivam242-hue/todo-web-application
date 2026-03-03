@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+
+<div class="container my-3">
+    <h1>Add a Todo</h1>
+
+    <form action="/" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="title" id="title">
+            <label>Todo title</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" name="desc" id="desc">
+            <label>Todo description</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+    </form>
+
+    <div class="container my-3">
+        <h1>Your Todos</h1>
+
+        {% if alldata|length == 0 %}
+            No record found 🫤!, Please Add your first todo...😊
+        {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SNo</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for database in alldata %}
+                <tr>
+                    <th>{{ loop.index }}</th>
+                    <td>{{ database.title }}</td>
+                    <td>{{ database.desc }}</td>
+                    <td>{{ database.date_created }}</td>
+                    <td>
+                        <a href="/update/{{ database.sno }}" class="btn btn-outline-dark btn-sm">Update</a>
+                        <a href="/delete/{{ database.sno }}" class="btn btn-outline-dark btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock body %}
